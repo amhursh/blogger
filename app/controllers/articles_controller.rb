@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-
+  # before_action :set_article, only: [:destroy, :edit]
   before_action :set_article, only: [:destroy, :edit]
 
   def index
@@ -34,6 +34,10 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :body)
+  end
+
+  def set_article
+    @article = Article.find(params[:id])
   end
 
 end
