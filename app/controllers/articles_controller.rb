@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   # before_action :set_article, only: [:destroy, :edit]
-  before_action :set_article, only: [:destroy, :edit]
+  before_action :set_article, only: [:destroy, :edit, :update]
 
   def index
     @articles = Article.all
@@ -28,6 +28,12 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    @article.update(article_params)
+
+    redirect_to articles_path(@article)
   end
 
   private
